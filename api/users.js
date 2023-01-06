@@ -37,14 +37,10 @@ usersRouter.post("/login", async (req, res, next) => {
     const user = await getUserByUsername(username);
 
     if (user && user.password === password) {
-      // create token & return to user
       const token = jwt.sign(
         { id: user.id, username: user.username },
         process.env.JWT_SECRET
       );
-
-      // const recoveredData = jwt.verify(token, process.env.JWT_SECRET);
-      // jwt.verify(token, "server secret");
 
       res.send({ message: "you're logged in!", token });
     } else {

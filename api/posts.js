@@ -9,7 +9,6 @@ postsRouter.post("/", requireUser, async (req, res, next) => {
   const tagArr = tags.trim().split(/\s+/);
   const postData = {};
 
-  // only send the tags if there are some to send
   if (tagArr.length) {
     postData.tags = tagArr;
   }
@@ -33,7 +32,6 @@ postsRouter.get("/", async (req, res, next) => {
   try {
     const allPosts = await getAllPosts();
 
-    // keep a post if it is either active, or if it belongs to the current user
     const posts = allPosts.filter((post) => {
       if (post.active) {
         return true;

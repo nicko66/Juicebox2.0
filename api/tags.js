@@ -14,8 +14,7 @@ tagsRouter.get("/", async (req, res, next) => {
   res.send({ tags });
 });
 
-// Spent way too much time trying to find out why the curl command or url wouldn't load anything.
-// I restarted and suddenly everything worked.
+
 tagsRouter.get("/:tagName/posts", async (req, res, next) => {
   const { tagName } = req.params;
 
